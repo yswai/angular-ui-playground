@@ -53,7 +53,7 @@
         }
 
         function getId() {
-            return (_.max(_.map(initialData, 'id')) + 1 ) || 1;
+            return (_.max(_.map(vm.leagues, 'id')) + 1 ) || 1;
         }
 
     }
