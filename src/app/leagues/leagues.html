@@ -24,11 +24,11 @@
         <tr ng-repeat="league in vm.leagues">
             <td ng-hide="vm.currentEdit[league.id]">{{league.name}}</td>
             <td ng-show="vm.currentEdit[league.id]">
-                <input type="text" class="form-control" ng-model="vm.currentEdit.name"/>
+                <input type="text" class="form-control" ng-model="vm.currentEdit[league.id].name"/>
             </td>
 
             <td>
-                <div class="btn-group" uib-dropdown>
+                <div class="btn-group" uib-dropdown ng-hide="vm.currentEdit[league.id]">
                     <button class="btn btn-success dropdown-toggle" uib-dropdown-toggle type="button">
                         Action <span class="caret"></span>
                     </button>
@@ -39,7 +39,7 @@
                     </ul>
                 </div>
 
-                <button class="btn btn-success" ng-click="vm.saveItem(league)" ng-show="vm.currentEdit[league.id]">
+                <button class="btn btn-success" ng-click="vm.saveItem(league.id)" ng-show="vm.currentEdit[league.id]">
                     Save
                 </button>
                 <button class="btn btn-danger" ng-click="vm.cancelEdit(league.id)" ng-show="vm.currentEdit[league.id]">

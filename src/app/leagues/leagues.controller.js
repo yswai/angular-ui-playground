@@ -32,19 +32,20 @@
         }
 
         function editItem (item) {
-            vm.currentEdit = angular.copy(item);
+            vm.currentEdit[item.id] = angular.copy(item);
         }
 
-        function saveItem (item) {
+        function saveItem (id) {
             _.each(vm.leagues, function(league) {
                 if (league.id === id) {
-                    league = item;
+                    league.name = vm.currentEdit[league.id].name;
                 }
             });
+            delete vm.currentEdit[id];
         }
 
-        function cancelEdit () {
-            vm.currentEdit = {};
+        function cancelEdit (id) {
+            delete vm.currentEdit[id];
         }
 
         function deleteItem (id) {
