@@ -65,7 +65,7 @@ body {
     vertical-align: middle !important;
 }
 
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.nav, .pagination, .carousel, a, .panel-title a { cursor: pointer; }
 
 .form-horizontal .time-label{
     padding-top: 42px;
