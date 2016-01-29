@@ -9,6 +9,7 @@
         var vm = this;
 
         vm.activate = activate;
+        vm.notesColllapsed = true;
 
         activate();
 
