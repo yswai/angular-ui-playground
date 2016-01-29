@@ -1,7 +1,8 @@
 <div>
     <h2>Configuration</h2>
     <uib-tabset>
-        <uib-tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}" active="tab.active"></uib-tab>
+        <uib-tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}" active="tab.active"
+                 ng-click="vm.go(tab.state)"></uib-tab>
     </uib-tabset>
 
     <div id="tabContent" class="container admin-content"></div>

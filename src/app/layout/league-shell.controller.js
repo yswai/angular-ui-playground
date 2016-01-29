@@ -3,21 +3,27 @@
 
     angular.module('eliteAdmin').controller('LeagueShellCtrl', LeagueShellCtrl);
 
-    LeagueShellCtrl.$inject = ['$routeParams', 'initialData'];
+    LeagueShellCtrl.$inject = ['$routeParams', 'initialData', '$location'];
 
-    function LeagueShellCtrl($routeParams, initialData) {
+    function LeagueShellCtrl($routeParams, initialData, $location) {
         /* jshint validthis:true */
         var vm = this;
         vm.leagueId = $routeParams.leagueId;
         vm.tabs = [
-            { text: 'Teams', state: 'league.teams' },
-            { text: 'Games', state: 'league.games' },
-            { text: 'Games Calendar', state: 'league.games-calendar' }
+            { text: 'Teams', state: 'teams', active: true },
+            { text: 'Games', state: 'games' },
+            { text: 'League Home', state: 'location'},
+            { text: 'Games Calendar', state: 'games-calendar' }
         ];
         vm.groupedTeams = {};
         vm.teams = initialData;
+        vm.go = go;
 
         activate();
+
+        function go(tab) {
+            $location.url('/leagues/' + vm.leagueId + '/' + tab);
+        }
 
         function activate() {
             _.first(vm.tabs).active = true;
@@ -26,13 +32,15 @@
                     return t.leagueId === parseInt($routeParams.leagueId);
                 })
                 .groupBy('divisionName')
-                .map(function(v, k) {
+                .map(function(v, k, idx) {
                     return {
                         groupName: k,
-                        isOpen: true,
+                        isOpen: false,
                         teams: v
                     };
                 }).value();
+            _.first(vm.groupedTeams).isOpen = true;
         }
+
     }
 })();
