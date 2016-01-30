@@ -33,6 +33,7 @@
         function activate() {
             _.first(vm.tabs).active = true;
             initializeGroup();
+            vm.toggleCollapseAll(false);
         }
 
         function initializeGroup() {
