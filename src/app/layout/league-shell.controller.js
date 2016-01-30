@@ -15,6 +15,8 @@
             { text: 'League Home', state: 'location'},
             { text: 'Games Calendar', state: 'games-calendar' }
         ];
+        vm.toggleCollapseAll = toggleCollapseAll;
+        vm.collapseAll = false;
         vm.groupedTeams = {};
         vm.teams = initialData;
         vm.go = go;
@@ -40,6 +42,12 @@
                     };
                 }).value();
             _.first(vm.groupedTeams).isOpen = true;
+        }
+
+        function toggleCollapseAll(isCollapsed) {
+            _.each(vm.groupedTeams, function(league) {
+                league.isOpen = !isCollapsed;
+            });
         }
 
     }

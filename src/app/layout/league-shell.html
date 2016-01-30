@@ -4,9 +4,20 @@
         <uib-tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}" active="tab.active"
                  ng-click="vm.go(tab.state)"></uib-tab>
     </uib-tabset>
-
-    <div id="tabContent" class="container admin-content"></div>
-
+    <br/>
+    <div class="row">
+        <div class="col-md-4 btn-group">
+            <label class="btn btn-primary">Add New Team</label>
+            <label class="btn btn-primary">Import Teams</label>
+        </div>
+        <div class="col-md-4 btn-group pull-right">
+            <label class="btn btn-info" ng-model="vm.collapseAll" uib-btn-radio="false"
+                   ng-click="vm.toggleCollapseAll(false)">Expand All</label>
+            <label class="btn btn-info" ng-model="vm.collapseAll" uib-btn-radio="true"
+                   ng-click="vm.toggleCollapseAll(true)">Collapse All</label>
+        </div>
+    </div>
+    <br/>
     <uib-accordion close-others="false">
         <uib-accordion-group ng-repeat="division in vm.groupedTeams" is-open="division.isOpen">
             <uib-accordion-heading>

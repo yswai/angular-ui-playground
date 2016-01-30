@@ -52,6 +52,7 @@
 
         function deleteItem (league) {
             var modalInstance = $uibModal.open({
+                size: 'md',
                 templateUrl: 'app/leagues/delete-confirm.html',
                 controller: 'DeleteConfirmCtrl',
                 controllerAs: 'vm',
