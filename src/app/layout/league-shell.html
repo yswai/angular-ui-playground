@@ -7,7 +7,7 @@
     <br/>
     <div class="row">
         <div class="col-md-4 btn-group">
-            <label class="btn btn-primary">Add New Team</label>
+            <label class="btn btn-primary" ng-click="vm.addNewTeam()">Add New Team</label>
             <label class="btn btn-primary">Import Teams</label>
         </div>
         <div class="col-md-4 btn-group pull-right">
@@ -35,7 +35,17 @@
                     <td>{{$index + 1}}</td>
                     <td>{{team.name}}</td>
                     <td>{{team.coach}}</td>
-                    <td></td>
+                    <td>
+                        <div class="btn-group" uib-dropdown>
+                            <button type="button" class="btn btn-success" uib-dropdown-toggle>
+                                Action <span class="caret"></span>
+                            </button>
+                            <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                <li role="menuitem"><a ng-click="vm.editTeam(team)">Edit Team</a></li>
+                                <li role="menuitem"><a ng-click="vm.deleteTeam(team)">Delete Team</a></li>
+                            </ul>
+                        </div>
+                    </td>
                 </tr>
             </table>
         </uib-accordion-group>

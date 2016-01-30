@@ -3,7 +3,30 @@
 </div>
 <hr/>
 <div class="modal-body">
-    {{ vm.properties.message }}
+    <div class="row">
+        <div class="col-md-4">
+            Team Name
+        </div>
+        <div class="col-md-6">
+            <input class="form-control" type="text" ng-model="vm.team.name" required/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            Coach
+        </div>
+        <div class="col-md-6">
+            <input class="form-control" type="text" ng-model="vm.team.coach" required/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            Division
+        </div>
+        <div class="col-md-6">
+            <input class="form-control" type="text" ng-model="vm.team.divisionName" required/>
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" ng-click="vm.ok()">{{vm.properties.button[0]}}</button>
