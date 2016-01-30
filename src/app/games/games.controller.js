@@ -1,11 +1,11 @@
 (function () {
     'use strict';
 
-    angular.module('eliteAdmin').controller('GamesCtrl', LeagueShellCtrl);
+    angular.module('eliteAdmin').controller('GamesCtrl', GamesCtrl);
 
-    LeagueShellCtrl.$inject = ['$routeParams', 'initialData', '$location'];
+    GamesCtrl.$inject = ['$routeParams', 'initialData', 'teams', 'locations', '$location', '$uibModal'];
 
-    function LeagueShellCtrl($routeParams, initialData, $location) {
+    function GamesCtrl($routeParams, initialData, teams, locations, $location, $uibModal) {
         /* jshint validthis:true */
         var vm = this;
         vm.leagueId = $routeParams.leagueId;
@@ -18,15 +18,112 @@
         vm.groupedTeams = {};
         vm.games = initialData;
         vm.go = go;
+        vm.editGame = editGame;
+        vm.deleteGame = deleteGame;
+        vm.addNewGame = addNewGame;
 
         activate();
+
+        function activate() {
+            joinData();
+        }
 
         function go(tab) {
             $location.url('/leagues/' + vm.leagueId + '/' + tab);
         }
 
-        function activate() {
-
+        function joinData() {
+            vm.games = _.map(vm.games, function(game) {
+                    var homeTeam = _.find(teams, { id: game.team1Id });
+                    var awayTeam = _.find(teams, { id: game.team2Id });
+                    var location = _.find(locations, { id: game.locationId });
+                    return _.assign(game, {
+                        homeTeam: homeTeam ? homeTeam.name : '',
+                        awayTeam: awayTeam ? awayTeam.name : '',
+                        location: location ? location.name : '',
+                        dateTime: new Date(game.time)
+                    })
+                });
         }
+
+        function editGame(game) {
+            var modal = $uibModal.open({
+                templateUrl: 'app/games/edit-game.html',
+                controller: 'EditGameCtrl',
+                controllerAs: 'vm',
+                resolve: {
+                    properties: {
+                        title: 'Edit game',
+                        button: [
+                            'Save', 'Cancel'
+                        ]
+                    },
+                    game: function() {
+                        return angular.copy(game);
+                    },
+                    teams: function() {
+                        return teams;
+                    },
+                    locations: function() {
+                        return locations;
+                    }
+                }
+            });
+            modal.result.then(function(editedGame) {
+                _.assign(_.find(vm.games, { id: game.id}), editedGame);
+                joinData();
+            });
+        }
+
+        function deleteGame(game) {
+            var modal = $uibModal.open({
+                templateUrl: 'app/leagues/delete-confirm.html',
+                controller: 'DeleteConfirmCtrl',
+                controllerAs: 'vm',
+                resolve: {
+                    properties: {
+                        title: 'Delete confirmation',
+                        message: 'Are you sure you want to delete this game ?',
+                        button: [
+                            'Ok', 'Cancel'
+                        ]
+                    }
+                }
+            });
+            modal.result.then(function() {
+                _.remove(vm.teams, { id: game.id });
+                joinData();
+            });
+        }
+
+        function addNewGame() {
+            var modal = $uibModal.open({
+                templateUrl: 'app/games/edit-game.html',
+                controller: 'EditGameCtrl',
+                controllerAs: 'vm',
+                resolve: {
+                    properties: {
+                        title: 'Add game',
+                        button: [
+                            'Save', 'Cancel'
+                        ]
+                    },
+                    game: function() {
+                        return {};
+                    },
+                    teams: function() {
+                        return teams;
+                    },
+                    locations: function() {
+                        return locations;
+                    }
+                }
+            });
+            modal.result.then(function(newGame) {
+                vm.games.push(newGame);
+                joinData();
+            });
+        }
+
     }
 })();

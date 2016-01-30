@@ -1,8 +1,43 @@
 <div>
-    <h2>Configuration</h2>
+    <h2>Games</h2>
     <uib-tabset>
         <uib-tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}"
                  active="tab.active" ng-click="vm.go(tab.state)"></uib-tab>
     </uib-tabset>
-    Games Content
+    <br/>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="btn btn-primary" ng-click="vm.addNewGame()">Add New Game</label>
+        </div>
+    </div>
+    <br/>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Game Time</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Location</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="game in vm.games | orderBy:'-dateTime'">
+            <td>{{ game.time | date:'dd/M/yyyy hh:mm a' }}</td>
+            <td>{{ game.homeTeam }}</td>
+            <td>{{ game.awayTeam }}</td>
+            <td>{{ game.location }}</td>
+            <td>
+                <div class="btn-group" uib-dropdown>
+                    <button class="btn btn-success dropdown-toggle" uib-dropdown-toggle type="button">
+                        Action <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-click="vm.editGame(game)">Edit</a></li>
+                        <li><a ng-click="vm.deleteGame(game)">Delete</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </table>
+
 </div>

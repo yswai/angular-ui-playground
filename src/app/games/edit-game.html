@@ -1,0 +1,53 @@
+<div class="modal-header">
+    <h3>{{ vm.properties.title }}</h3>
+</div>
+<hr/>
+<div class="modal-body">
+    <div class="row form-group">
+        <div class="col-md-4">Date</div>
+        <div class="col-md-6">
+            <p class="input-group">
+                <input class="form-control" type="text" uib-datepicker-popup="dd-MMMM-yyyy" is-open="vm.popupOpened"
+                       ng-model="vm.game.date" close-text="Close" ng-required="true"/>
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="vm.popupOpened = true"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-4">Time</div>
+        <div class="col-md-6">
+            <uib-timepicker minute-step="15" ng-model="vm.game.time"></uib-timepicker>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-4">Home Team</div>
+        <div class="col-md-6">
+            <select class="form-control" ng-model="vm.game.team1Id">
+                <option ng-repeat="team in vm.teams" value="{{team.id}}">{{ team.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-4">Away Team</div>
+        <div class="col-md-6">
+            <select class="form-control" ng-model="vm.game.team2Id">
+                <option ng-repeat="team in vm.teams" value="{{team.id}}">{{ team.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-4">Location</div>
+        <div class="col-md-6">
+            <select class="form-control" ng-model="vm.game.locationId">
+                <option ng-repeat="location in vm.locations" value="{{location.id}}">{{ location.name }}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="vm.ok()">{{vm.properties.button[0]}}</button>
+    <button class="btn btn-default" ng-click="vm.cancel()">{{vm.properties.button[1]}}</button>
+</div>
