@@ -72,7 +72,10 @@
                             'Save', 'Cancel'
                         ]
                     },
-                    team: {}
+                    divisions: function() {
+                        return _.uniq(_.map(vm.groupedTeams, 'groupName'));
+                    },
+                    team: function() { }
                 }
             });
             modal.result.then(function(newTeam) {
@@ -94,6 +97,9 @@
                         button: [
                             'Save', 'Cancel'
                         ]
+                    },
+                    divisions: function() {
+                        return _.uniq(_.map(vm.groupedTeams, 'groupName'));
                     },
                     team: function() {
                         return angular.copy(team);
