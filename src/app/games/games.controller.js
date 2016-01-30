@@ -91,7 +91,7 @@
                 }
             });
             modal.result.then(function() {
-                _.remove(vm.teams, { id: game.id });
+                _.remove(vm.games, { id: game.id });
                 joinData();
             });
         }

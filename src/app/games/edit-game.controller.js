@@ -15,6 +15,10 @@
         vm.locations = locations;
         vm.teams = teams;
 
+        var uiDate = vm.game.time ? new Date(vm.game.time) : new Date();
+        vm.game.date = uiDate;
+        vm.game.time = uiDate;
+
         function ok() {
             vm.game.time = combineDate();
             delete vm.game.date;
