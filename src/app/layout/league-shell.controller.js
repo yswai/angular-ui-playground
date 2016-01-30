@@ -32,7 +32,7 @@
                     return t.leagueId === parseInt($routeParams.leagueId);
                 })
                 .groupBy('divisionName')
-                .map(function(v, k, idx) {
+                .map(function(v, k) {
                     return {
                         groupName: k,
                         isOpen: false,

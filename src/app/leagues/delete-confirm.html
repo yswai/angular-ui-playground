@@ -1,0 +1,10 @@
+<div class="modal-header">
+    {{ vm.properties.title }}
+</div>
+<div class="modal-body">
+    {{ vm.properties.message }}
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="vm.ok()">{{vm.properties.button[0]}}</button>
+    <button class="btn btn-default" ng-click="vm.cancel()">{{vm.properties.button[1]}}</button>
+</div>

@@ -3,9 +3,9 @@
 
     angular.module('eliteAdmin').controller('LeaguesCtrl', LeaguesCtrl);
 
-    LeaguesCtrl.$inject = ['initialData'];
+    LeaguesCtrl.$inject = ['initialData', '$uibModal'];
 
-    function LeaguesCtrl(initialData) {
+    function LeaguesCtrl(initialData, $uibModal) {
         /* jshint validthis:true */
         var vm = this;
         vm.newLeagueName = '';
@@ -18,6 +18,8 @@
         vm.deleteItem = deleteItem;
         vm.addItem = addItem;
         vm.itemToEdit = {};
+        vm.showHelpAlert = true;
+        vm.hideAlert = hideAlert;
 
         function addItem () {
             vm.leagues.push({
@@ -48,12 +50,36 @@
             delete vm.currentEdit[id];
         }
 
-        function deleteItem (id) {
-            vm.leagues = _.reject(vm.leagues, { id: id})
+        function deleteItem (league) {
+            var modalInstance = $uibModal.open({
+                templateUrl: 'app/leagues/delete-confirm.html',
+                controller: 'DeleteConfirmCtrl',
+                controllerAs: 'vm',
+                resolve: {
+                    league: league,
+                    properties: {
+                        title: 'Delete confirmation',
+                        message: 'Are you sure you want to delete league "' + league.name + '"?',
+                        button: [
+                            'Ok', 'Cancel'
+                        ]
+                    }
+                }
+            });
+            modalInstance.result.then(function(isDelete) {
+                if (!isDelete) return;
+                vm.leagues = _.reject(vm.leagues, { id: league.id});
+            }, function() {
+
+            });
         }
 
         function getId() {
             return (_.max(_.map(vm.leagues, 'id')) + 1 ) || 1;
+        }
+
+        function hideAlert() {
+            vm.showHelpAlert = false;
         }
 
     }
