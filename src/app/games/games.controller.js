@@ -12,8 +12,8 @@
         vm.tabs = [
             { text: 'Teams', state: 'teams' },
             { text: 'Games', state: 'games', active: true },
-            { text: 'League Home', state: 'location'},
-            { text: 'Games Calendar', state: 'games-calendar' }
+            { text: 'Games Calendar', state: 'games-calendar' },
+            { text: 'Home', state: 'league-home'}
         ];
         vm.groupedTeams = {};
         vm.games = initialData;

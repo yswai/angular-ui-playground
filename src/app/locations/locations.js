@@ -1,19 +1,19 @@
 (function () {
     'use strict';
 
-    angular.module('eliteAdmin').controller('LocationCtrl', LeagueShellCtrl);
+    angular.module('eliteAdmin').controller('LocationsCtrl', LocationsCtrl);
 
-    LeagueShellCtrl.$inject = ['$routeParams', '$location'];
+    LocationsCtrl.$inject = ['$routeParams', '$location'];
 
-    function LeagueShellCtrl($routeParams, $location) {
+    function LocationsCtrl($routeParams, $location) {
         /* jshint validthis:true */
         var vm = this;
         vm.leagueId = $routeParams.leagueId;
         vm.tabs = [
             { text: 'Teams', state: 'teams' },
             { text: 'Games', state: 'games'},
-            { text: 'League Home', state: 'location', active: true },
-            { text: 'Games Calendar', state: 'games-calendar' }
+            { text: 'Games Calendar', state: 'games-calendar' },
+            { text: 'Home', state: 'league-home', active: true }
         ];
         vm.groupedTeams = {};
         vm.go = go;

@@ -1561,10 +1561,15 @@
                     }
                 }
             })
-            .when('/leagues/:leagueId/location', {
-                controller: 'LocationCtrl',
+            .when('/leagues/:leagueId/league-home', {
+                controller: 'LeagueHomeCtrl',
                 controllerAs: 'vm',
-                templateUrl: 'app/location/location.html'
+                templateUrl: 'app/league-home/league-home.html'
+            })
+            .when('/locations', {
+                controller: 'LocationsCtrl',
+                controllerAs: 'vm',
+                templateUrl: 'app/locations/locations.html'
             });
 
 

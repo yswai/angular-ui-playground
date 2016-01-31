@@ -12,8 +12,8 @@
         vm.tabs = [
             { text: 'Teams', state: 'teams', active: true },
             { text: 'Games', state: 'games' },
-            { text: 'League Home', state: 'location'},
-            { text: 'Games Calendar', state: 'games-calendar' }
+            { text: 'Games Calendar', state: 'games-calendar' },
+            { text: 'Home', state: 'league-home'}
         ];
         vm.toggleCollapseAll = toggleCollapseAll;
         vm.collapseAll = false;
