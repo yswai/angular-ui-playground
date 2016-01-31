@@ -1493,7 +1493,8 @@
         // Angular modules
         'ngRoute',
         // 3rd Party Modules
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ui.calendar'
     ]);
 
     app.config(['$routeProvider', configRoutes]);
@@ -1548,7 +1549,10 @@
                 resolve: {
                     initialData: [function () {
                         return GAMES;
-                    }]
+                    }],
+                    games: function() {
+                        return GAMES;
+                    }
                 }
             })
             .when('/leagues/:leagueId/location', {

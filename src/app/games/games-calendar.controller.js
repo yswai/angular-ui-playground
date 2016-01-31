@@ -3,11 +3,12 @@
 
     angular.module('eliteAdmin').controller('GamesCalendarCtrl', LeagueShellCtrl);
 
-    LeagueShellCtrl.$inject = ['$routeParams', '$location'];
+    LeagueShellCtrl.$inject = ['$routeParams', '$location', 'games'];
 
-    function LeagueShellCtrl($routeParams, $location) {
+    function LeagueShellCtrl($routeParams, $location, games) {
         /* jshint validthis:true */
         var vm = this;
+        vm.games = games;
         vm.leagueId = $routeParams.leagueId;
         vm.tabs = [
             { text: 'Teams', state: 'teams' },

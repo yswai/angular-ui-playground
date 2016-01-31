@@ -20,6 +20,10 @@ body {
     background-color: #f5f5f5;
 }
 
+#games-calendar {
+    margin-top: 25px;
+}
+
 .container {
     width: auto;
     max-width: 900px;
