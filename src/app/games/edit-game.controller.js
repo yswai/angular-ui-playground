@@ -18,6 +18,7 @@
         var uiDate = vm.game.time ? new Date(vm.game.time) : new Date();
         vm.game.date = uiDate;
         vm.game.time = uiDate;
+        vm.game.id = vm.game.id || _.uniqueId('game_');
 
         function ok() {
             vm.game.time = combineDate();
