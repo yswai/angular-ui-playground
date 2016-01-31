@@ -1,4 +1,35 @@
 <div>
     <h2>Locations</h2>
-    Locations Content
+    <div class="row">
+        <div class="col-md-4">
+            <label class="btn btn-primary" ng-click="vm.addNewLocation()">Add New Location</label>
+        </div>
+    </div>
+    <br/>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="location in vm.locations">
+                <td>{{ location.name }}</td>
+                <td>{{ location.address }}</td>
+                <td>
+                    <div class="btn-group" uib-dropdown>
+                        <button class="btn btn-success dropdown-toggle" uib-dropdown-toggle type="button">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="vm.editLocation(location)">Edit</a></li>
+                            <li><a ng-click="vm.deleteLocation(location)">Delete</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

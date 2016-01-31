@@ -127,3 +127,5 @@ body {
     color: #efb73e;
     padding: 0;
 }
+
+.angular-google-map-container { height: 400px; }

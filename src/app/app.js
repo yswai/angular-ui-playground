@@ -1494,7 +1494,8 @@
         'ngRoute',
         // 3rd Party Modules
         'ui.bootstrap',
-        'ui.calendar'
+        'ui.calendar',
+        'uiGmapgoogle-maps'
     ]);
 
     app.config(['$routeProvider', configRoutes]);
@@ -1569,9 +1570,13 @@
             .when('/locations', {
                 controller: 'LocationsCtrl',
                 controllerAs: 'vm',
-                templateUrl: 'app/locations/locations.html'
+                templateUrl: 'app/locations/locations.html',
+                resolve: {
+                    locations: function() {
+                        return LOCATIONS;
+                    }
+                }
             });
-
 
         $routeProvider.otherwise('/');
     }
