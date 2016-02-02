@@ -1498,9 +1498,14 @@
         'uiGmapgoogle-maps'
     ]);
 
-    app.config(['$routeProvider', configRoutes]);
+    app.config(['$routeProvider', 'uiGmapGoogleMapApiProvider', configRoutes]);
 
-    function configRoutes($routeProvider) {
+    function configRoutes($routeProvider, uiGmapGoogleMapApiProvider) {
+
+        uiGmapGoogleMapApiProvider.configure({
+            v: '3.20'
+        });
+
         $routeProvider
             .when('/', {
                 templateUrl: 'app/home/home.html',

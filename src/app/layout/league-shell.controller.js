@@ -49,7 +49,7 @@
                 .map(function(teams, groupName) {
                     return {
                         groupName: groupName,
-                        isOpen: _.contains(openedGroups, groupName),
+                        isOpen: _.includes(openedGroups, groupName),
                         teams: teams
                     };
                 }).value();
