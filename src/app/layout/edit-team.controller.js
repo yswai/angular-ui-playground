@@ -12,7 +12,8 @@
         vm.cancel = cancel;
         vm.team = team;
         vm.divisions = divisions;
-
+        console.log(properties);
+        console.log(divisions);
         function ok() {
             $modalInstance.close(vm.team);
         };

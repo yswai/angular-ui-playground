@@ -67,11 +67,11 @@
                 controller: 'EditTeamCtrl',
                 controllerAs: 'vm',
                 resolve: {
-                    properties: {
-                        title: 'Add new team',
-                        button: [
-                            'Save', 'Cancel'
-                        ]
+                    properties: function() {
+                        return {
+                            title: 'Add new team',
+                                button: ['Save', 'Cancel']
+                        }
                     },
                     divisions: function() {
                         return _.uniq(_.map(vm.groupedTeams, 'groupName'));
@@ -93,11 +93,13 @@
                 controller: 'EditTeamCtrl',
                 controllerAs: 'vm',
                 resolve: {
-                    properties: {
-                        title: 'Edit team "' + team.name + '"',
-                        button: [
-                            'Save', 'Cancel'
-                        ]
+                    properties: function () {
+                        return {
+                            title: 'Edit team "' + team.name + '"',
+                            button: [
+                                'Save', 'Cancel'
+                            ]
+                        }
                     },
                     divisions: function() {
                         return _.uniq(_.map(vm.groupedTeams, 'groupName'));
@@ -123,12 +125,14 @@
                 controller: 'DeleteConfirmCtrl',
                 controllerAs: 'vm',
                 resolve: {
-                    properties: {
-                        title: 'Delete confirmation',
-                        message: 'Are you sure you want to delete team "' + team.name + '"?',
-                        button: [
-                            'Ok', 'Cancel'
-                        ]
+                    properties: function() {
+                        return {
+                            title: 'Delete confirmation',
+                            message: 'Are you sure you want to delete team "' + team.name + '"?',
+                            button: [
+                                'Ok', 'Cancel'
+                            ]
+                        }
                     }
                 }
             });

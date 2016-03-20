@@ -52,11 +52,13 @@
                 controller: 'EditGameCtrl',
                 controllerAs: 'vm',
                 resolve: {
-                    properties: {
-                        title: 'Edit game',
-                        button: [
-                            'Save', 'Cancel'
-                        ]
+                    properties: function () {
+                        return {
+                            title: 'Edit game',
+                            button: [
+                                'Save', 'Cancel'
+                            ]
+                        }
                     },
                     game: function() {
                         return angular.copy(game);

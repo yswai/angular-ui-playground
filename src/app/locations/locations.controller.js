@@ -14,6 +14,7 @@
         vm.deleteLocation = deleteLocation;
 
         function addNewLocation() {
+            $location.path('/locations/add');
             // var modal = $uibModal.open({
             //     size: 'lg',
             //     templateUrl: 'app/locations/edit-location.html',

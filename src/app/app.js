@@ -1599,7 +1599,7 @@
                 templateUrl: 'app/locations/edit-location.html',
                 resolve: {
                     locations: function() {
-                        return null;
+                        return LOCATIONS;
                     }
                 }
             });

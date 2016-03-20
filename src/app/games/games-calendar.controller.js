@@ -94,11 +94,13 @@
                 controller: 'EditGameCtrl',
                 controllerAs: 'vm',
                 resolve: {
-                    properties: {
-                        title: 'Add game',
-                        button: [
-                            'Save', 'Cancel'
-                        ]
+                    properties: function () {
+                        return {
+                            title: 'Add game',
+                            button: [
+                                'Save', 'Cancel'
+                            ]
+                        }
                     },
                     game: function() {
                         return {};

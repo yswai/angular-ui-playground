@@ -8,7 +8,7 @@
         <div class="col-md-6">
             <p class="input-group">
                 <input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy" is-open="vm.popupOpened"
-                       ng-model="vm.game.date" close-text="Close" ng-required="true"/>
+                       ng-model="vm.game.date" close-text="Close" ng-required="true" ng-click="vm.popupOpened = true"/>
                 <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="vm.popupOpened = true"><i
                         class="glyphicon glyphicon-calendar"></i></button>
