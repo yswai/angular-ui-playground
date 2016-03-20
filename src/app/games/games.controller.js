@@ -47,7 +47,7 @@
         }
 
         function editGame(game) {
-            var modal = $uibModal.open({
+            var modal = $modal.open({
                 templateUrl: 'app/games/edit-game.html',
                 controller: 'EditGameCtrl',
                 controllerAs: 'vm',
@@ -76,7 +76,7 @@
         }
 
         function deleteGame(game) {
-            var modal = $uibModal.open({
+            var modal = $modal.open({
                 templateUrl: 'app/leagues/delete-confirm.html',
                 controller: 'DeleteConfirmCtrl',
                 controllerAs: 'vm',
@@ -97,7 +97,7 @@
         }
 
         function addNewGame() {
-            var modal = $uibModal.open({
+            var modal = $modal.open({
                 templateUrl: 'app/games/edit-game.html',
                 controller: 'EditGameCtrl',
                 controllerAs: 'vm',
