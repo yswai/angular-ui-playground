@@ -10,7 +10,6 @@
         vm.properties = properties;
         vm.ok = ok;
         vm.cancel = cancel;
-        console.log(properties);
 
         function ok() {
             $modalInstance.close(true);

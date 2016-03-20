@@ -22,6 +22,7 @@
         vm.hideAlert = hideAlert;
 
         function addItem () {
+            if (_.isEmpty(vm.newLeagueName)) return;
             vm.leagues.push({
                 "id": getId(),
                 "name": vm.newLeagueName,
@@ -57,11 +58,10 @@
                 controller: 'DeleteConfirmCtrl',
                 controllerAs: 'vm',
                 resolve: {
-                    league: league,
                     properties: function () {
                         return {
                             title: 'Delete confirmation',
-                                message: 'Are you sure you want to delete league "' + league.name + '"?',
+                            message: 'Are you sure you want to delete league "' + league.name + '"?',
                             button: ['Ok', 'Cancel']
                         }
                     }
