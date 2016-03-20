@@ -3,9 +3,9 @@
 
     angular.module('eliteAdmin').controller('EditTeamCtrl', EditTeamCtrl);
 
-    EditTeamCtrl.$inject = ['$uibModalInstance', 'properties', 'team', 'divisions'];
+    EditTeamCtrl.$inject = ['$modalInstance', 'properties', 'team', 'divisions'];
 
-    function EditTeamCtrl($uibModalInstance, properties, team, divisions) {
+    function EditTeamCtrl($modalInstance, properties, team, divisions) {
         var vm = this;
         vm.properties = properties;
         vm.ok = ok;
@@ -14,11 +14,11 @@
         vm.divisions = divisions;
 
         function ok() {
-            $uibModalInstance.close(vm.team);
+            $modalInstance.close(vm.team);
         };
 
         function cancel() {
-            $uibModalInstance.dismiss();
+            $modalInstance.dismiss();
         };
 
     };

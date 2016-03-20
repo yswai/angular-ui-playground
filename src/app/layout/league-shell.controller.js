@@ -3,9 +3,9 @@
 
     angular.module('eliteAdmin').controller('LeagueShellCtrl', LeagueShellCtrl);
 
-    LeagueShellCtrl.$inject = ['$uibModal', '$routeParams', 'initialData', '$location'];
+    LeagueShellCtrl.$inject = ['$modal', '$routeParams', 'initialData', '$location'];
 
-    function LeagueShellCtrl($uibModal, $routeParams, initialData, $location) {
+    function LeagueShellCtrl($modal, $routeParams, initialData, $location) {
         /* jshint validthis:true */
         var vm = this;
         vm.leagueId = $routeParams.leagueId;
@@ -49,7 +49,7 @@
                 .map(function(teams, groupName) {
                     return {
                         groupName: groupName,
-                        isOpen: _.includes(openedGroups, groupName),
+                        isOpen: _.contains(openedGroups, groupName),
                         teams: teams
                     };
                 }).value();
@@ -62,7 +62,7 @@
         }
 
         function addNewTeam() {
-            var modal = $uibModal.open({
+            var modal = $modal.open({
                 templateUrl: 'app/layout/edit-team.html',
                 controller: 'EditTeamCtrl',
                 controllerAs: 'vm',
@@ -88,7 +88,7 @@
         }
 
         function editTeam(team) {
-            var modal = $uibModal.open({
+            var modal = $modal.open({
                 templateUrl: 'app/layout/edit-team.html',
                 controller: 'EditTeamCtrl',
                 controllerAs: 'vm',
@@ -118,7 +118,7 @@
         }
 
         function deleteTeam(team) {
-            var modal = $uibModal.open({
+            var modal = $modal.open({
                 templateUrl: 'app/leagues/delete-confirm.html',
                 controller: 'DeleteConfirmCtrl',
                 controllerAs: 'vm',

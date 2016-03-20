@@ -3,28 +3,14 @@
 
     angular.module('eliteAdmin').controller('EditLocationCtrl', EditTeamCtrl);
 
-    EditTeamCtrl.$inject = ['$uibModalInstance', 'properties', 'location', 'uiGmapGoogleMapApi'];
+    EditTeamCtrl.$inject = ['$routeParams', 'locations'];
 
-    function EditTeamCtrl($uibModalInstance, properties, location, uiGmapGoogleMapApi) {
+    function EditTeamCtrl($routeParams, locations) {
+
         var vm = this;
-        vm.properties = properties;
-        vm.ok = ok;
-        vm.cancel = cancel;
-        vm.location = location;
+        vm.location = $routeParams.id;
         vm.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
-        uiGmapGoogleMapApi.then(function(maps) {
-            console.log(maps);
-        });
-
-        function ok() {
-            $uibModalInstance.close(vm.location);
-        };
-
-        function cancel() {
-            $uibModalInstance.dismiss();
-        };
-
-    };
+    }
 
 })();

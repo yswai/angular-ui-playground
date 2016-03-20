@@ -1,9 +1,9 @@
 <div>
     <h2>Games</h2>
-    <uib-tabset>
-        <uib-tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}"
-                 active="tab.active" ng-click="vm.go(tab.state)"></uib-tab>
-    </uib-tabset>
+    <tabset>
+        <tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}"
+                 active="tab.active" ng-click="vm.go(tab.state)"></tab>
+    </tabset>
     <br/>
     <div class="row">
         <div class="col-md-4">
@@ -27,8 +27,8 @@
             <td>{{ game.awayTeam }}</td>
             <td>{{ game.location }}</td>
             <td>
-                <div class="btn-group" uib-dropdown>
-                    <button class="btn btn-success dropdown-toggle" uib-dropdown-toggle type="button">
+                <div class="btn-group" dropdown>
+                    <button class="btn btn-success dropdown-toggle" dropdown-toggle type="button">
                         Action <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">

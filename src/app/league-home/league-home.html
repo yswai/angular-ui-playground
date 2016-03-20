@@ -1,8 +1,8 @@
 <div>
     <h2>League Home</h2>
-    <uib-tabset>
-        <uib-tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}"
-                 active="tab.active" ng-click="vm.go(tab.state)"></uib-tab>
-    </uib-tabset>
+    <tabset>
+        <tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}"
+                 active="tab.active" ng-click="vm.go(tab.state)"></tab>
+    </tabset>
     League Home Content
 </div>

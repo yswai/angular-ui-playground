@@ -3,9 +3,9 @@
 
     angular.module('eliteAdmin').controller('GamesCtrl', GamesCtrl);
 
-    GamesCtrl.$inject = ['$routeParams', 'initialData', 'teams', 'locations', '$location', '$uibModal'];
+    GamesCtrl.$inject = ['$routeParams', 'initialData', 'teams', 'locations', '$location', '$modal'];
 
-    function GamesCtrl($routeParams, initialData, teams, locations, $location, $uibModal) {
+    function GamesCtrl($routeParams, initialData, teams, locations, $location, $modal) {
         /* jshint validthis:true */
         var vm = this;
         vm.leagueId = $routeParams.leagueId;

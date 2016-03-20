@@ -3,9 +3,9 @@
 
     angular.module('eliteAdmin').controller('LocationsCtrl', LocationsCtrl);
 
-    LocationsCtrl.$inject = ['$routeParams', '$location', 'locations', '$uibModal'];
+    LocationsCtrl.$inject = ['$routeParams', '$location', 'locations', '$modal'];
 
-    function LocationsCtrl($routeParams, $location, locations, $uibModal) {
+    function LocationsCtrl($routeParams, $location, locations, $modal) {
         /* jshint validthis:true */
         var vm = this;
         vm.locations = locations;
@@ -14,54 +14,54 @@
         vm.deleteLocation = deleteLocation;
 
         function addNewLocation() {
-            var modal = $uibModal.open({
-                size: 'lg',
-                templateUrl: 'app/locations/edit-location.html',
-                controller: 'EditLocationCtrl',
-                controllerAs: 'vm',
-                resolve: {
-                    properties: {
-                        title: 'Add location',
-                        button: [
-                            'Save', 'Cancel'
-                        ]
-                    },
-                    location: function() {
-                        return null;
-                    }
-                }
-            });
-            modal.result.then(function(newLocation) {
-                vm.locations.push(newLocation);
-            });
+            // var modal = $uibModal.open({
+            //     size: 'lg',
+            //     templateUrl: 'app/locations/edit-location.html',
+            //     controller: 'EditLocationCtrl',
+            //     controllerAs: 'vm',
+            //     resolve: {
+            //         properties: {
+            //             title: 'Add location',
+            //             button: [
+            //                 'Save', 'Cancel'
+            //             ]
+            //         },
+            //         location: function() {
+            //             return null;
+            //         }
+            //     }
+            // });
+            // modal.result.then(function(newLocation) {
+            //     vm.locations.push(newLocation);
+            // });
         }
 
         function editLocation(location) {
-            var modal = $uibModal.open({
-                size: 'lg',
-                templateUrl: 'app/locations/edit-location.html',
-                controller: 'EditLocationCtrl',
-                controllerAs: 'vm',
-                resolve: {
-                    properties: {
-                        title: 'Edit location',
-                        button: [
-                            'Save', 'Cancel'
-                        ]
-                    },
-                    location: function() {
-                        return angular.copy(location);
-                    }
-                }
-            });
-            modal.result.then(function(editedLocation) {
-                var existingLocation = _.find(vm.locations, { id: location.id });
-                _.assign(existingLocation, editedLocation);
-            });
+            // var modal = $uibModal.open({
+            //     size: 'lg',
+            //     templateUrl: 'app/locations/edit-location.html',
+            //     controller: 'EditLocationCtrl',
+            //     controllerAs: 'vm',
+            //     resolve: {
+            //         properties: {
+            //             title: 'Edit location',
+            //             button: [
+            //                 'Save', 'Cancel'
+            //             ]
+            //         },
+            //         location: function() {
+            //             return angular.copy(location);
+            //         }
+            //     }
+            // });
+            // modal.result.then(function(editedLocation) {
+            //     var existingLocation = _.find(vm.locations, { id: location.id });
+            //     _.assign(existingLocation, editedLocation);
+            // });
         }
 
         function deleteLocation(location) {
-            var modalInstance = $uibModal.open({
+            var modalInstance = $modal.open({
                 size: 'md',
                 templateUrl: 'app/leagues/delete-confirm.html',
                 controller: 'DeleteConfirmCtrl',

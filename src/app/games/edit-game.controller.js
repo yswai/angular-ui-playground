@@ -3,9 +3,9 @@
 
     angular.module('eliteAdmin').controller('EditGameCtrl', EditGameCtrl);
 
-    EditGameCtrl.$inject = ['$uibModalInstance', 'properties', 'game', 'locations', 'teams'];
+    EditGameCtrl.$inject = ['$modalInstance', 'properties', 'game', 'locations', 'teams'];
 
-    function EditGameCtrl($uibModalInstance, properties, game, locations, teams) {
+    function EditGameCtrl($modalInstance, properties, game, locations, teams) {
         var vm = this;
         vm.properties = properties;
         vm.popupOpened - false;
@@ -23,11 +23,11 @@
         function ok() {
             vm.game.time = combineDate();
             delete vm.game.date;
-            $uibModalInstance.close(vm.game);
+            $modalInstance.close(vm.game);
         };
 
         function cancel() {
-            $uibModalInstance.dismiss();
+            $modalInstance.dismiss();
         };
 
         function combineDate() {

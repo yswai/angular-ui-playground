@@ -3,10 +3,10 @@
 
     angular.module('eliteAdmin').controller('GamesCalendarCtrl', LeagueShellCtrl);
 
-    LeagueShellCtrl.$inject = ['$scope', '$routeParams', '$location', 'games', '$uibModal',
+    LeagueShellCtrl.$inject = ['$scope', '$routeParams', '$location', 'games', '$modal',
                                 'teams', 'locations', 'uiCalendarConfig'];
 
-    function LeagueShellCtrl($scope, $routeParams, $location, games, $uibModal,
+    function LeagueShellCtrl($scope, $routeParams, $location, games, $modal,
                              teams, locations, uiCalendarConfig) {
         /* jshint validthis:true */
         var vm = this;
@@ -89,7 +89,7 @@
         }
 
         function addNewGame() {
-            var modal = $uibModal.open({
+            var modal = $modal.open({
                 templateUrl: 'app/games/edit-game.html',
                 controller: 'EditGameCtrl',
                 controllerAs: 'vm',

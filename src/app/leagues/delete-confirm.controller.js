@@ -3,21 +3,22 @@
 
     angular.module('eliteAdmin').controller('DeleteConfirmCtrl', DeleteConfirmCtrl);
 
-    DeleteConfirmCtrl.$inject = ['$uibModalInstance', 'properties'];
+    DeleteConfirmCtrl.$inject = ['$modalInstance', 'properties'];
 
-    function DeleteConfirmCtrl($uibModalInstance, properties) {
+    function DeleteConfirmCtrl($modalInstance, properties) {
         var vm = this;
         vm.properties = properties;
         vm.ok = ok;
         vm.cancel = cancel;
+        console.log(properties);
 
         function ok() {
-            $uibModalInstance.close(true);
-        };
+            $modalInstance.close(true);
+        }
 
         function cancel() {
-            $uibModalInstance.dismiss();
-        };
+            $modalInstance.dismiss();
+        }
 
     };
 

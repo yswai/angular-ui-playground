@@ -2,7 +2,9 @@
     <h2>Locations</h2>
     <div class="row">
         <div class="col-md-4">
-            <label class="btn btn-primary" ng-click="vm.addNewLocation()">Add New Location</label>
+            <label class="btn btn-primary">
+                <a ng-href="#/locations/add">Add New Location</a>
+            </label>
         </div>
     </div>
     <br/>
@@ -19,12 +21,12 @@
                 <td>{{ location.name }}</td>
                 <td>{{ location.address }}</td>
                 <td>
-                    <div class="btn-group" uib-dropdown>
-                        <button class="btn btn-success dropdown-toggle" uib-dropdown-toggle type="button">
+                    <div class="btn-group" dropdown>
+                        <button class="btn btn-success dropdown-toggle" dropdown-toggle type="button">
                             Action <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click="vm.editLocation(location)">Edit</a></li>
+                            <li><a ng-href="#/locations/edit/{{location.id}}">Edit</a></li>
                             <li><a ng-click="vm.deleteLocation(location)">Delete</a></li>
                         </ul>
                     </div>

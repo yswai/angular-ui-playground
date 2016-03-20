@@ -14,12 +14,12 @@
     </div>
 
     <button class="btn btn-info" ng-click="vm.notesCollapsed = !vm.notesCollapsed"
-            uib-popover="Click here for additional information" popover-trigger="mouseenter" popover-placement="right">
+            popover="Click here for additional information" popover-trigger="mouseenter" popover-placement="right">
         Additional Info
     </button>
 
     <p>
-        <div uib-collapse="vm.notesCollapsed">
+        <div collapse="vm.notesCollapsed">
             <div class="well in">
                 <h4>Helpful tips:</h4>
                 <ul>

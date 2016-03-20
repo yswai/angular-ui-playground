@@ -1503,7 +1503,8 @@
     function configRoutes($routeProvider, uiGmapGoogleMapApiProvider) {
 
         uiGmapGoogleMapApiProvider.configure({
-            v: '3.20'
+            key: 'AIzaSyCp8idjcuYMN2AdrK2-rjW3o4X8KCkHyOg',
+            v: '3.22'
         });
 
         $routeProvider
@@ -1579,6 +1580,26 @@
                 resolve: {
                     locations: function() {
                         return LOCATIONS;
+                    }
+                }
+            })
+            .when('/locations/edit/:id', {
+                controller: 'EditLocationCtrl',
+                controllerAs: 'vm',
+                templateUrl: 'app/locations/edit-location.html',
+                resolve: {
+                    locations: function() {
+                        return LOCATIONS;
+                    }
+                }
+            })
+            .when('/locations/add', {
+                controller: 'EditLocationCtrl',
+                controllerAs: 'vm',
+                templateUrl: 'app/locations/edit-location.html',
+                resolve: {
+                    locations: function() {
+                        return null;
                     }
                 }
             });

@@ -7,7 +7,7 @@
         <div class="col-md-4">Date</div>
         <div class="col-md-6">
             <p class="input-group">
-                <input class="form-control" type="text" uib-datepicker-popup="dd-MMMM-yyyy" is-open="vm.popupOpened"
+                <input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy" is-open="vm.popupOpened"
                        ng-model="vm.game.date" close-text="Close" ng-required="true"/>
                 <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="vm.popupOpened = true"><i
@@ -19,7 +19,7 @@
     <div class="row form-group">
         <div class="col-md-4">Time</div>
         <div class="col-md-6">
-            <uib-timepicker minute-step="15" ng-model="vm.game.time"></uib-timepicker>
+            <timepicker minute-step="15" ng-model="vm.game.time"></timepicker>
         </div>
     </div>
     <div class="row form-group">

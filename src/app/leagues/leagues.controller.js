@@ -3,9 +3,9 @@
 
     angular.module('eliteAdmin').controller('LeaguesCtrl', LeaguesCtrl);
 
-    LeaguesCtrl.$inject = ['initialData', '$uibModal'];
+    LeaguesCtrl.$inject = ['initialData', '$modal'];
 
-    function LeaguesCtrl(initialData, $uibModal) {
+    function LeaguesCtrl(initialData, $modal) {
         /* jshint validthis:true */
         var vm = this;
         vm.newLeagueName = '';
@@ -51,19 +51,19 @@
         }
 
         function deleteItem (league) {
-            var modalInstance = $uibModal.open({
+            var modalInstance = $modal.open({
                 size: 'md',
                 templateUrl: 'app/leagues/delete-confirm.html',
                 controller: 'DeleteConfirmCtrl',
                 controllerAs: 'vm',
                 resolve: {
                     league: league,
-                    properties: {
-                        title: 'Delete confirmation',
-                        message: 'Are you sure you want to delete league "' + league.name + '"?',
-                        button: [
-                            'Ok', 'Cancel'
-                        ]
+                    properties: function () {
+                        return {
+                            title: 'Delete confirmation',
+                                message: 'Are you sure you want to delete league "' + league.name + '"?',
+                            button: ['Ok', 'Cancel']
+                        }
                     }
                 }
             });
