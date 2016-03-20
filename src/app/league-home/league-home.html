@@ -4,5 +4,13 @@
         <tab ng-repeat="tab in vm.tabs" heading="{{tab.text}}"
                  active="tab.active" ng-click="vm.go(tab.state)"></tab>
     </tabset>
-    League Home Content
+
+    <div class="row">
+        <div class="form-group">
+            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-warning">Reset</button>
+        </div>
+    </div>
+    <div ui-ace="{ showGutter: true, mode: 'markdown', theme: 'dreamweaver' }" ng-model="vm.content"></div>
+    <div markdown="{{vm.content}}"></div>
 </div>

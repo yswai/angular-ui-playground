@@ -3,9 +3,9 @@
 
     angular.module('eliteAdmin').controller('LocationsCtrl', LocationsCtrl);
 
-    LocationsCtrl.$inject = ['$routeParams', '$location', 'locations', '$modal'];
+    LocationsCtrl.$inject = ['$location', 'locations', '$modal'];
 
-    function LocationsCtrl($routeParams, $location, locations, $modal) {
+    function LocationsCtrl($location, locations, $modal) {
         /* jshint validthis:true */
         var vm = this;
         vm.locations = locations;
@@ -68,22 +68,21 @@
                 controller: 'DeleteConfirmCtrl',
                 controllerAs: 'vm',
                 resolve: {
-                    properties: {
-                        title: 'Delete confirmation',
-                        message: 'Are you sure you want to delete location "' + location.name + '"?',
-                        button: [
-                            'Ok', 'Cancel'
-                        ]
+                    properties: function() {
+                        return {
+                            title: 'Delete confirmation',
+                            message: 'Are you sure you want to delete location "' + location.name + '"?',
+                            button: [
+                                'Ok', 'Cancel'
+                            ]
+                        }
                     }
                 }
             });
             modalInstance.result.then(function(isDelete) {
                 if (!isDelete) return;
                 vm.locations = _.reject(vm.locations, { id: location.id});
-            }, function() {
-
             });
         }
-
     }
 })();

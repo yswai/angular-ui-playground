@@ -8,6 +8,7 @@
     function LeagueHomeCtrl($routeParams, $location) {
         /* jshint validthis:true */
         var vm = this;
+        vm.content = null;
         vm.leagueId = $routeParams.leagueId;
         vm.tabs = [
             { text: 'Teams', state: 'teams' },

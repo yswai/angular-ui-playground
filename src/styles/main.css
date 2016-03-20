@@ -131,3 +131,7 @@ body {
 .angular-google-map-container {
     height: 500px;
 }
+
+.ace_editor {
+    height: 200px;
+}

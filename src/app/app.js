@@ -1495,7 +1495,8 @@
         // 3rd Party Modules
         'ui.bootstrap',
         'ui.calendar',
-        'uiGmapgoogle-maps'
+        'uiGmapgoogle-maps',
+        'ui.ace'
     ]);
 
     app.config(['$routeProvider', 'uiGmapGoogleMapApiProvider', configRoutes]);
@@ -1590,7 +1591,17 @@
                 resolve: {
                     locations: function() {
                         return LOCATIONS;
-                    }
+                    },
+                    maps: ['uiGmapGoogleMapApi', function (uiGmapGoogleMapApi) {
+                        return uiGmapGoogleMapApi;
+                    }],
+                    currentPosition: ['$q', function ($q) {
+                        var deferred = $q.defer();
+                        navigator.geolocation.getCurrentPosition(function (curr) {
+                            deferred.resolve(curr);
+                        });
+                        return deferred.promise;
+                    }]
                 }
             })
             .when('/locations/add', {
@@ -1600,7 +1611,17 @@
                 resolve: {
                     locations: function() {
                         return LOCATIONS;
-                    }
+                    },
+                    maps: ['uiGmapGoogleMapApi', function (uiGmapGoogleMapApi) {
+                        return uiGmapGoogleMapApi;
+                    }],
+                    currentPosition: ['$q', function ($q) {
+                        var deferred = $q.defer();
+                        navigator.geolocation.getCurrentPosition(function (curr) {
+                            deferred.resolve(curr);
+                        });
+                        return deferred.promise;
+                    }]
                 }
             });
 
